@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  agenttisen-ohjelmoinnin-kontti:
+    build: .
+    container_name: agenttisen-ohjelmoinnin-kontti
+    ports:
+      - "2222:22"
+    volumes:
+      - ./project:/root/project
+    restart: unless-stopped
