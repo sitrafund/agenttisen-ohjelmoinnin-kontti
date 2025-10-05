@@ -7,62 +7,39 @@ Alla lyhyet ohjeet (Mac-koneelle) ympäristön käynnistämiseksi ja yhdistämis
 ### 1) Siirry työpöydälle ja kloonaa repo
 
 ```bash
-cd ~/Desktop
+cd ~/toivottu-sijainti
 git clone https://github.com/sitrafund/agenttisen-ohjelmoinnin-kontti.git
+cd ~/toivottu-sijainti/agenttisen-ohjelmoinnin-kontti/
 ```
 
-### 2) Luo SSH-avain (ed25519)
+### 2) Aja setup.sh-skripti
 
 ```bash
-ssh-keygen -t ed25519
-```
-- Paina Enter hyväksyäksesi oletuspolun `~/.ssh/id_ed25519`, ja aseta halutessasi aseta salasana (passphrase).
-
-### 3) Kopioi julkinen avain projektin juureen
-
-```bash
-cp ~/.ssh/id_ed25519.pub ~/Desktop/agenttisen-ohjelmoinnin-kontti/
+./setup.sh
 ```
 
-Varmista, että tiedosto `id_ed25519.pub` löytyy projektin juuresta (`agenttisen-ohjelmoinnin-kontti`).
-
-### 4) Käynnistä kontti Dockerilla
+### 3) Käynnistä kontti Dockerilla
 
 Mikäli Docker ei ole vielä asennettu, hanki se asentamalla esimerkiksi Docker Desktop [docker.com](https://www.docker.com).
 
-Kun Docker on asennettu, rakenna ja käynnistä kontti.
+Kun Docker on asennettu, avaa terminaali, rakenna ja käynnistä kontti seuraavalla komennolla.
 
 ```bash
-cd ~/Desktop/agenttisen-ohjelmoinnin-kontti/
 docker-compose up -d --build
 ```
 
 Tämä rakentaa imaget ja käynnistää palvelut taustalla.
 
-### 5) Lisää SSH-konfiguraatio
+### 4) Asenna VS Code -laajennus
 
-Lisää tämä `~/.ssh/config` -tiedostoon. Luo tiedosto, mikäli sitä ei ole.
+- **VS Code** asenna laajennus **Remote - SSH**. [Lisätietoja Remote - SSH -laajennuksesta](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
 
-```bash
-Host agenttisen-ohjelmoinnin-kontti
-  HostName localhost
-  Port 2222
-  User root
-  IdentityFile ~/.ssh/id_ed25519
-```
+### 5) Yhdistä VS Code konttiin SSH:lla
 
-### 6) Asenna editorilaajennus
+- Avaa Remote Explorer -välilehti VS Codessa
+- Yhdistä kohteeseen `agenttisen-ohjelmoinnin-kontti`. Ellet näe tätä, virkistä näkymä.
 
-- **VS Code** tai **Cursor**: asenna laajennus **Remote - SSH**. [Lisätietoja Remote - SSH -laajennuksesta](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
-
-### 7) Yhdistä konttiin SSH:lla
-
-- Avaa Remote - SSH -laajennus ja lisää uusi SSH-kohde (Host) kontille.
-- Yhdistä lisättyyn kohteeseen laajennuksen kautta.
-
-Tarvittaessa päivitä yhteys- tai avainpolut oman ympäristösi mukaan.
-
-### 8) Avaa editorin terminaalissa Claude Code
+### 6) Avaa editorin terminaalissa Claude Code
 
 - Avaa terminaali ja kirjoita
 
@@ -70,7 +47,22 @@ Tarvittaessa päivitä yhteys- tai avainpolut oman ympäristösi mukaan.
 claude
 ```
 
-Nyt voit aloittaa Claude Coden käytön, ja tekoälyn pääsy rajaantuu vain kontin sisällä oleviin tiedostoihin.
+#### Huomio - Ongelma authorisoinnin kanssa
+Mikäli VS Coden terminaalissa ilmenee yhteysongelmia Clauden authorisoinnin kanssa, tee authorisointi macOS terminaalissa seuraavasti:
+
+- Siirry kontin sisälle tällä komennolla:
+
+```bash
+docker exec -it agenttisen-ohjelmoinnin-kontti bash
+```
+
+- Aloita authorisointi Claude Codeen, ja seuraa ohjeita
+
+```bash
+claude
+```
+
+Nyt voit aloittaa Claude Coden käytön (myös VS Codessa), ja tekoälyn pääsy rajoittuu vain kontin sisällä oleviin tiedostoihin. Claude Code -sessio tallentuu taustalla, jotta sinun ei tarvitse tunnistautua uudelleen, kun käynnistät kontin uudelleen.
 
 Kontissa on valmiiksi projektikansio sijainnissa `/root/project/`, joka on mountattu, eli sen sisään tallennetut tiedostot säilyvät, kun kontti sammutetaan.
 
