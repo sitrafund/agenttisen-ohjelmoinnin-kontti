@@ -1,10 +1,12 @@
-version: "3.8"
 services:
   agenttisen-ohjelmoinnin-kontti:
     build: .
     container_name: agenttisen-ohjelmoinnin-kontti
     ports:
       - "2222:22"
+      - "3000:3000"
     volumes:
       - ./project:/root/project
+      - ./conf/claude-session-tallennus/.claude:/root/claude-session-tallennus/.claude
+      - ./conf/claude-session-tallennus/.claude.json:/root/claude-session-tallennus/.claude.json
     restart: unless-stopped
