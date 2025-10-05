@@ -1,3 +1,12 @@
+# Mac-tiedostot
 .DS_Store
-*.pub
+
+# SSH
+conf/ssh/**
+
+# Claude
+.claude
+.claude.json
+
+# Käyttäjän projekti
 project/
