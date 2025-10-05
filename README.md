@@ -4,7 +4,7 @@ Agenttista ohjelmointia on suositeltavaa tehdä omassa virtuaalisessa ympärist�
 
 Alla lyhyet ohjeet (Mac-koneelle) ympäristön käynnistämiseksi ja yhdistämiseksi konttiin SSH:n kautta.
 
-### 1) Siirry työpöydälle ja kloonaa repo
+### 1) Siirry toivottuun sijaintiin ja kloonaa repo
 
 ```bash
 cd ~/toivottu-sijainti
@@ -22,7 +22,7 @@ cd ~/toivottu-sijainti/agenttisen-ohjelmoinnin-kontti/
 
 Mikäli Docker ei ole vielä asennettu, hanki se asentamalla esimerkiksi Docker Desktop [docker.com](https://www.docker.com).
 
-Kun Docker on asennettu, avaa terminaali, rakenna ja käynnistä kontti seuraavalla komennolla.
+Kun Docker on asennettu, avaa terminaali, rakenna ja käynnistä kontti seuraavalla komennolla:
 
 ```bash
 docker-compose up -d --build
@@ -38,10 +38,12 @@ Tämä rakentaa imaget ja käynnistää palvelut taustalla.
 
 - Avaa Remote Explorer -välilehti VS Codessa
 - Yhdistä kohteeseen `agenttisen-ohjelmoinnin-kontti`. Ellet näe tätä, virkistä näkymä.
+- Valitse sijainti Explorer-välilehti -> Open Folder -> /root/project
+- Paina ok
 
 ### 6) Avaa editorin terminaalissa Claude Code
 
-- Avaa terminaali ja kirjoita
+- Avaa VS Coden terminaali ja kirjoita:
 
 ```bash
 claude
