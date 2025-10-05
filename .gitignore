@@ -1,9 +1,6 @@
 # Mac-tiedostot
 .DS_Store
 
-# SSH
-conf/ssh/**
-
 # Claude
 .claude
 .claude.json
