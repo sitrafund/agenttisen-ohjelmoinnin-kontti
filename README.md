@@ -32,14 +32,14 @@ Tämä rakentaa imaget ja käynnistää palvelut taustalla.
 
 ## 4) Asenna VS Code -laajennus
 
-- **VS Code** asenna laajennus **Remote - SSH**. [Lisätietoja Remote - SSH -laajennuksesta](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
+- Asenna VS Code -laajennus **Remote - SSH**. [Lisätietoja Remote - SSH -laajennuksesta](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
 
 ## 5) Yhdistä VS Code konttiin SSH:lla
 
-- Avaa Remote Explorer -välilehti VS Codessa
+- Avaa **Remote Explorer** -välilehti VS Codessa
 - Yhdistä kohteeseen `agenttisen-ohjelmoinnin-kontti`. Ellet näe tätä, virkistä näkymä.
-- Valitse sijainti Explorer-välilehti -> Open Folder -> /root/project
-- Paina ok
+- Valitse sijainti **Explorer**-välilehti -> **Open Folder** -> `/root/project`
+- Paina OK
 
 ## 6) Avaa editorin terminaalissa Claude Code
 
@@ -50,7 +50,7 @@ claude
 ```
 
 ### Huomio - Ongelma authorisoinnin kanssa
-Mikäli VS Coden terminaalissa ilmenee yhteysongelmia Clauden authorisoinnin kanssa, tee authorisointi macOS terminaalissa seuraavasti:
+Mikäli VS Coden terminaalissa ilmenee yhteysongelmia Claude Coden authorisoinnin kanssa, tee authorisointi macOS terminaalissa seuraavasti:
 
 - Siirry kontin sisälle tällä komennolla:
 
@@ -64,7 +64,7 @@ docker exec -it agenttisen-ohjelmoinnin-kontti bash
 claude
 ```
 
-Nyt voit aloittaa Claude Coden käytön (myös VS Codessa), ja tekoälyn pääsy rajoittuu vain kontin sisällä oleviin tiedostoihin. Claude Code -sessio tallentuu taustalla, jotta sinun ei tarvitse tunnistautua uudelleen, kun käynnistät kontin uudelleen.
+Kun authorisointi on tehty, voit aloittaa Claude Coden käytön (myös VS Codessa), ja tekoälyn pääsy rajoittuu vain kontin sisällä oleviin tiedostoihin. Claude Code -sessio tallentuu taustalla, jotta sinun ei tarvitse tunnistautua uudelleen, kun käynnistät kontin uudelleen.
 
 Kontissa on valmiiksi projektikansio sijainnissa `/root/project/`, joka on mountattu, eli sen sisään tallennetut tiedostot säilyvät, kun kontti sammutetaan.
 
