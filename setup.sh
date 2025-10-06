@@ -15,6 +15,14 @@ HOST_ENTRY="agenttisen-ohjelmoinnin-kontti"
 CURRENT_DIR=$(pwd)
 IDENTITY_FILE="$CURRENT_DIR/conf/ssh/id_ed25519_agenttikontti"
 
+# Lisää SSH-yhteyskonfiguraatiotiedosto, jos sitä ei ole jo olemassa
+if [ ! -f "$CONFIG_FILE" ]; then
+  touch "$CONFIG_FILE"
+  chmod 600 "$CONFIG_FILE"
+  echo $'\e[32m[SUCCESS] SSH-yhteyskonfiguraatio luotu\e[0m'
+fi
+
+# Lisää SSH-yhteyskonfiguraatio, jos sitä ei ole jo olemassa
 if ! grep -q "Host $HOST_ENTRY" "$CONFIG_FILE"; then
   {
     echo ""
