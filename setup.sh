@@ -19,7 +19,7 @@ IDENTITY_FILE="$CURRENT_DIR/conf/ssh/id_ed25519_agenttikontti"
 if [ ! -f "$CONFIG_FILE" ]; then
   touch "$CONFIG_FILE"
   chmod 600 "$CONFIG_FILE"
-  echo $'\e[32m[SUCCESS] SSH-yhteyskonfiguraatio luotu\e[0m'
+  echo $'\e[32m[SUCCESS] SSH-yhteyskonfiguraatiotiedosto luotu\e[0m'
 fi
 
 # Lisää SSH-yhteyskonfiguraatio, jos sitä ei ole jo olemassa
