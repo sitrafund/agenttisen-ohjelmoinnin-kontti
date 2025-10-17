@@ -1,7 +1,7 @@
 services:
   agenttisen-ohjelmoinnin-kontti:
     build: .
-    container_name: agenttisen-ohjelmoinnin-kontti
+    container_name: ${CONTAINER_NAME:-agenttisen-ohjelmoinnin-kontti}
     ports:
       - "2222:22"
       - "3000:3000"

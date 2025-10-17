@@ -4,16 +4,16 @@ Agenttista ohjelmointia on suositeltavaa tehdä omassa virtuaalisessa ympärist�
 
 Alla olevat ohjeet auttavat sinua käynnistämään ympäristön ja yhdistämään siihen SSH:n kautta Mac-tietokoneella.
 
-## 1) Siirry toivottuun sijaintiin ja kloonaa repo
+## 1) Siirry toivottuun sijaintiin ja kloonaa repositorio toivotun projektinimen alle
 
 ```bash
 cd ~/toivottu-sijainti
 ```
 ```bash
-git clone https://github.com/sitrafund/agenttisen-ohjelmoinnin-kontti.git
+git clone https://github.com/sitrafund/agenttisen-ohjelmoinnin-kontti.git toivottu-projektin-nimi
 ```
 ```bash
-cd ~/toivottu-sijainti/agenttisen-ohjelmoinnin-kontti/
+cd ~/toivottu-sijainti/toivottu-projektin-nimi/
 ```
 
 ## 2) Aja setup.sh-skripti
@@ -43,7 +43,7 @@ Tämä rakentaa imaget ja käynnistää palvelut taustalla.
 - Avaa macOS-terminaali ja kirjoita:
 
 ```bash
-docker exec -it agenttisen-ohjelmoinnin-kontti bash
+docker exec -it toivottu-projektin-nimi bash
 ```
 ```bash
 claude
@@ -55,7 +55,7 @@ Kun authorisointi on tehty, voit aloittaa Claude Coden käytön (myös VS Codess
 
 - Asenna VS Code -laajennus **Remote - SSH**. [Lisätietoja Remote - SSH -laajennuksesta](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
 - Avaa **Remote Explorer** -välilehti VS Codessa
-- Yhdistä kohteeseen `agenttisen-ohjelmoinnin-kontti`. Ellet näe tätä, virkistä näkymä.
+- Yhdistä kohteeseen `toivottu-projektin-nimi`. Ellet näe tätä, virkistä näkymä.
 - Valitse sijainti **Explorer**-välilehti -> **Open Folder** -> `/root/project`
 - Paina OK
 

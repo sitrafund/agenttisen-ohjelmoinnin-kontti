@@ -11,9 +11,15 @@ echo $'\e[32m[SUCCESS] SSH-avaimen luonti valmis\e[0m'
 
 # Lisää SSH-yhteyskonfiguraatio
 CONFIG_FILE=~/.ssh/config
-HOST_ENTRY="agenttisen-ohjelmoinnin-kontti"
+HOST_ENTRY=$(basename $(pwd))
 CURRENT_DIR=$(pwd)
 IDENTITY_FILE="$CURRENT_DIR/conf/ssh/id_ed25519_agenttikontti"
+
+# Luo .env-tiedosto Docker Composea varten, jos sitä ei ole jo olemassa
+if [ ! -f ".env" ]; then
+  echo "CONTAINER_NAME=$HOST_ENTRY" > .env
+  echo $'\e[32m[SUCCESS] .env-tiedosto luotu\e[0m'
+fi
 
 # Lisää SSH-yhteyskonfiguraatiotiedosto, jos sitä ei ole jo olemassa
 if [ ! -f "$CONFIG_FILE" ]; then
@@ -31,6 +37,9 @@ if ! grep -q "Host $HOST_ENTRY" "$CONFIG_FILE"; then
     echo "  Port 2222"
     echo "  User root"
     echo "  IdentityFile $IDENTITY_FILE"
+    echo "  StrictHostKeyChecking no"
+    echo "  UserKnownHostsFile /dev/null"
+    echo "  LogLevel ERROR"
   } >> "$CONFIG_FILE"
   echo $'\e[32m[SUCCESS] SSH-yhteyskonfiguraatio luotu\e[0m'
 fi

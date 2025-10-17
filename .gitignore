@@ -7,3 +7,6 @@
 
 # Käyttäjän projekti
 project/
+
+# Ympäristötiedosto
+.env
