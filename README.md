@@ -67,6 +67,12 @@ Kun authorisointi on tehty, voit aloittaa Claude Coden käytön (myös VS Codess
 claude
 ```
 
+## 7) Kokeile - Pyydä Claudea luomaan peli
+
+```bash
+Luo ristinolla-peli porttiin 3000
+```
+
 Kontissa on valmiiksi projektikansio sijainnissa `/root/project/`, joka on mountattu — sen sisältö säilyy, vaikka kontti sammutetaan.
 
 Onnea ohjelmointiin 🤖
