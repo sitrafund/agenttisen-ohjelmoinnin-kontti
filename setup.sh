@@ -23,6 +23,7 @@ fi
 
 # Lisää SSH-yhteyskonfiguraatiotiedosto, jos sitä ei ole jo olemassa
 if [ ! -f "$CONFIG_FILE" ]; then
+  mkdir -p ~/.ssh
   touch "$CONFIG_FILE"
   chmod 600 "$CONFIG_FILE"
   echo $'\e[32m[SUCCESS] SSH-yhteyskonfiguraatiotiedosto luotu\e[0m'
