@@ -1,115 +1,83 @@
 # Agenttisen ohjelmoinnin kontti
 
-Agenttista ohjelmointia on suositeltavaa tehdä omassa virtuaalisessa ympäristössä, kuten Docker-kontissa. Näin tekoälyn pääsy koneen tiedostoihin pysyy rajattuna ja työskentely-ympäristö eriytyy selkeästi muusta järjestelmästä.
+Agenttista ohjelmointia varten rakennettu kehitysympäristö, joka hyödyntää VS Code Dev Containersia. Tekoälyn pääsy rajoittuu kontin sisälle, ja työskentely-ympäristö on selkeästi eriytetty muusta järjestelmästä.
 
-Alla olevat ohjeet auttavat sinua käynnistämään ympäristön ja yhdistämään siihen SSH:n kautta Mac-tietokoneella.
+## Kansiorakenne
 
-## 1) Siirry toivottuun sijaintiin ja kloonaa repositorio toivotun projektinimen alle
-
-```bash
-cd ~/toivottu-sijainti
 ```
-```bash
-git clone https://github.com/sitrafund/agenttisen-ohjelmoinnin-kontti.git toivottu-projektin-nimi
-```
-```bash
-cd ~/toivottu-sijainti/toivottu-projektin-nimi/
+/
+├── .devcontainer/               # Kehitysympäristön konfiguraatio
+│   ├── Dockerfile               # Dev container -image
+│   └── devcontainer.json        # VS Code Dev Container -asetukset
+├── project/                     # Oma sovelluksesi
+└── README.md
 ```
 
-## 2) Aja setup.sh-skripti
+## Käyttöönotto
 
-```bash
-./setup.sh
-```
+### Vaatimukset
 
-Skripti luo SSH-konfiguraation ja valmistelee Claude Code -sessiotiedostot.
+- [Docker Desktop](https://www.docker.com)
+- [VS Code](https://code.visualstudio.com)
+- VS Code -laajennus: [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
-## 3) Käynnistä kontti Dockerilla
+### Käynnistys
 
-**Varmista, että Docker Desktop on käynnissä.**
+1. Kloonaa repositorio:
+   ```bash
+   git clone https://github.com/sitrafund/agenttisen-ohjelmoinnin-kontti.git projektin-nimi
+   ```
 
-Mikäli Docker Desktop ei ole vielä asennettu, hanki se täältä [docker.com](https://www.docker.com).
+2. Siirry kansioon:
+   ```bash
+   cd projektin-nimi
+   ```
 
-Kun Docker on asennettu, avaa macOS-terminaali, rakenna ja käynnistä kontti seuraavalla komennolla:
+3. Avaa kansio VS Codessa:
+   ```bash
+   code .
+   ```
 
-```bash
-docker-compose up -d --build
-```
+4. VS Code tunnistaa `.devcontainer/`-kansion ja ehdottaa: **"Reopen in Container"** — klikkaa sitä.
 
-Tämä rakentaa imaget ja käynnistää palvelut taustalla.
+5. Odota, että kontti rakentuu. Tämän jälkeen olet kehitysympäristössä.
 
-## 4) Tunnistaudu Claude Codeen macOS-terminaalissa
+### Claude Coden käyttö
 
-- Avaa macOS-terminaali ja kirjoita:
-
-```bash
-docker exec -it toivottu-projektin-nimi bash
-```
-```bash
-claude
-```
-
-Kun authorisointi on tehty, voit aloittaa Claude Coden käytön (myös VS Codessa), ja tekoälyn pääsy rajoittuu vain kontin sisällä oleviin tiedostoihin. Claude Code -sessio tallentuu taustalla, jotta sinun ei tarvitse tunnistautua uudelleen, kun käynnistät kontin uudelleen.
-
-## 5) Yhdistä VS Code konttiin SSH:lla
-
-- Asenna VS Code -laajennus **Remote - SSH**. [Lisätietoja Remote - SSH -laajennuksesta](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-ssh).
-- Avaa **Remote Explorer** -välilehti VS Codessa
-- Yhdistä kohteeseen `toivottu-projektin-nimi`. Ellet näe tätä, virkistä näkymä.
-- Valitse sijainti **Explorer**-välilehti -> **Open Folder** -> `/root/project`
-- Paina OK
-
-## 6) Aloita Claude Coden käyttö VS Code:lla
-
-- Käynnistä VS Code:n terminaali ja kirjoita
-
+Avaa VS Coden terminaali ja kirjoita:
 ```bash
 claude
 ```
 
-## 7) Kokeile - Pyydä Claudea luomaan peli
+### Mistral Viben käyttö
 
 ```bash
-Luo ristinolla-peli porttiin 3000
+vibe
 ```
 
-Kontissa on valmiiksi projektikansio sijainnissa `/root/project/`, joka on mountattu — sen sisältö säilyy, vaikka kontti sammutetaan.
+### Tunnistautuminen
+
+Ensimmäisellä kerralla sinun tulee tunnistautua. Tunnistautuminen ei välttämättä toimi VS Coden terminaalissa. Tällöin avaa Macin oma terminaali, siirry kontin sisään ja kirjoita `claude` tai `vibe`:
+
+```bash
+docker exec -it <kontin-nimi> bash
+claude
+```
+
+Tunnistautumisen jälkeen sessio säilyy ja voit jatkaa VS Coden terminaalissa.
+
+## Dev Container -ominaisuudet
+
+Kontissa on valmiiksi asennettuna:
+- Claude Code
+- Mistral Vibe
+
+## Kokeile
+
+Pyydä Claudea tai Mistral Vibeä luomaan peli:
+
+```
+Luo ristinolla-peli project-kansioon ja porttiin 3000
+```
 
 Onnea ohjelmointiin 🤖
-
-# Lisätietoja
-
-## Miten Claude Code -sessio tallennetaan?
-
-Claude Code -sessio perustuu sessiotiedostoihin, jotka tulee tallentaa kontin ulkopuolelle, jotta sessio säilyy, kun kontti sammutetaan.
-
-Synkronoituvat Claude Code -sessiotiedostot ovat seuraavat:
-
-#### Kontin sisäpuolella
-
-- `/root/.claude`
-- `/root/.claude.json`
-- `/root/project/.claude`
-
-#### Isäntäkoneella (kontin ulkopuolella)
-
-- `conf/claude-code-session-tallennus/.claude`
-- `conf/claude-code-session-tallennus/.claude.json`
-- `project/.claude`
-
-## Miten avaan HTTP-portteja konttiin?
-
-Lähtökohtaisesti Docker-konttiin on avattu kaksi porttia:
-
-- `2222` SSH-yhteydelle
-- `3000` verkko-ohjelmalle
-
-Portteja voi avata lisää seuraavasti, esim. portti `5000`:
-
-- Avaa `docker-compose.yml` -tiedosto
-- Jatka porttilistaa `- "5000:5000"` -rivillä
-- Avaa `Dockerfile`-tiedosto
-- Muunna `EXPOSE 22 3000` muotoon `EXPOSE 22 3000 5000`
-- Käynnistä Docker-kontti uudelleen 
-  - `docker-compose down && docker-compose up -d --build`
-- Portti `5000` on nyt tarjolla

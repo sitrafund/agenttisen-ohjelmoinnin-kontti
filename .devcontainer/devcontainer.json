@@ -1,0 +1,22 @@
+{
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "remoteUser": "node",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+        "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {},
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.12"
+        }
+    },
+    "mounts": [
+        "source=claude-code-config-${devcontainerId},target=/home/node/.claude,type=volume",
+        "source=mistral-vibe-config-${devcontainerId},target=/home/node/.vibe,type=volume"
+    ],
+    "containerEnv": {
+        "CLAUDE_CONFIG_DIR": "/home/node/.claude",
+        "VIBE_CONFIG_DIR": "/home/node/.vibe"
+    },
+    "postCreateCommand": "pip3 install --break-system-packages mistral-vibe"
+}

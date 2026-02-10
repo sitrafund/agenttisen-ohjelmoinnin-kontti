@@ -3,7 +3,9 @@
 
 # Claude
 .claude
-.claude.json
+
+# Mistral Vibe
+.vibe
 
 # Käyttäjän projekti
 project/
