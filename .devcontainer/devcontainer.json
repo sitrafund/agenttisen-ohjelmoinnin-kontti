@@ -18,5 +18,8 @@
         "CLAUDE_CONFIG_DIR": "/home/node/.claude",
         "VIBE_CONFIG_DIR": "/home/node/.vibe"
     },
-    "postCreateCommand": "pip3 install --break-system-packages mistral-vibe && mkdir -p /workspaces/${localWorkspaceFolderBasename}/project"
+    "postCreateCommand": "pip3 install --break-system-packages mistral-vibe && mkdir -p /workspaces/${localWorkspaceFolderBasename}/project",
+    "remoteEnv": {
+        "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}"
+    }
 }
