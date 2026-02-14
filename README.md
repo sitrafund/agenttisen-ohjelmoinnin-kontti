@@ -33,14 +33,19 @@ Agenttista ohjelmointia varten rakennettu kehitysympäristö, joka hyödyntää 
    cd projektin-nimi
    ```
 
-3. Avaa kansio VS Codessa:
+3. Vaihda devcontainer-versio-oksaan
+   ```bash
+   git checkout devcontainer-versio
+   ```
+
+4. Avaa kansio VS Codessa:
    ```bash
    code .
    ```
 
-4. VS Code tunnistaa `.devcontainer/`-kansion ja ehdottaa: **"Reopen in Container"** — klikkaa sitä.
+5. VS Code tunnistaa `.devcontainer/`-kansion ja ehdottaa: **"Reopen in Container"** — klikkaa sitä.
 
-5. Odota, että kontti rakentuu. Tämän jälkeen olet kehitysympäristössä.
+6. Odota, että kontti rakentuu. Tämän jälkeen olet kehitysympäristössä.
 
 ### Claude Coden käyttö
 
