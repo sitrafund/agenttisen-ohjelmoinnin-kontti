@@ -15,6 +15,9 @@ git clone https://github.com/sitrafund/agenttisen-ohjelmoinnin-kontti.git toivot
 ```bash
 cd ~/toivottu-sijainti/toivottu-projektin-nimi/
 ```
+```bash
+git checkout ssh-versio
+```
 
 ## 2) Aja setup.sh-skripti
 
