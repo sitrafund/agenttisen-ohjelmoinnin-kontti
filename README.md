@@ -25,7 +25,7 @@ Agenttista ohjelmointia varten rakennettu kehitysympäristö, joka hyödyntää 
 
 1. Kloonaa repositorio:
    ```bash
-   git clone https://github.com/sitrafund/agenttisen-ohjelmoinnin-kontti.git projektin-nimi
+   git clone --depth 1 https://github.com/sitrafund/agenttisen-ohjelmoinnin-kontti.git projektin-nimi
    ```
 
 2. Siirry kansioon:
@@ -33,19 +33,14 @@ Agenttista ohjelmointia varten rakennettu kehitysympäristö, joka hyödyntää 
    cd projektin-nimi
    ```
 
-3. Vaihda devcontainer-versio-oksaan
-   ```bash
-   git checkout devcontainer-versio
-   ```
-
-4. Avaa kansio VS Codessa:
+3. Avaa kansio VS Codessa:
    ```bash
    code .
    ```
 
-5. VS Code tunnistaa `.devcontainer/`-kansion ja ehdottaa: **"Reopen in Container"** — klikkaa sitä.
+4. VS Code tunnistaa `.devcontainer/`-kansion ja ehdottaa: **"Reopen in Container"** — klikkaa sitä.
 
-6. Odota, että kontti rakentuu. Tämän jälkeen olet kehitysympäristössä.
+5. Odota, että kontti rakentuu. Tämän jälkeen olet kehitysympäristössä.
 
 ### Claude Coden käyttö
 
