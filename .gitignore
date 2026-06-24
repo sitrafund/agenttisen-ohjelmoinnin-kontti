@@ -12,3 +12,6 @@ project/
 
 # Ympäristötiedosto
 .env
+
+# Devcontainer feature -lukkotiedosto (luodaan automaattisesti)
+.devcontainer/devcontainer-lock.json
