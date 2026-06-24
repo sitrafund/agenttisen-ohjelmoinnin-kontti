@@ -14,7 +14,8 @@
     ],
     "containerEnv": {
         "CLAUDE_CONFIG_DIR": "/home/node/.claude",
-        "VIBE_CONFIG_DIR": "/home/node/.vibe"
+        "VIBE_CONFIG_DIR": "/home/node/.vibe",
+        "TZ": "Europe/Helsinki"
     },
     "postCreateCommand": "pip3 install --break-system-packages mistral-vibe && mkdir -p /workspaces/${localWorkspaceFolderBasename}/project",
     "remoteEnv": {
